@@ -1,22 +1,63 @@
+---
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+	description: string;
+	title: string;
+}
+
+const { description, title } = Astro.props;
+const { currentLocale} = Astro
+---
+
+
 <!doctype html>
-<html lang="en">
+<html lang={ currentLocale }>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="" href="" />
+  <slot name="preload" />
+
+  <!-- ✅ Open Graph (para Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://osmaabogado.com/" />
+  <meta property="og:image" content="https://osmaabogado.com/og-image.jpg" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="" />
+</head>
+
+	<body class="relative min-h-screen">
+  <!-- Fondo global -->
+  <div class="fixed inset-0 -z-10 bg-neutral-950 bg-[radial-gradient(ellipse_90%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+
+  <Header />
+  <slot />
+  <Footer />
+</body>
+
+
 </html>
 
-<style>
+<style is global>
+:root {
+  color-scheme: ligth dark;
+}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		
 	}
 </style>

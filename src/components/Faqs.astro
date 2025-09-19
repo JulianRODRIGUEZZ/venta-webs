@@ -1,0 +1,63 @@
+---
+const faqs = [
+  {
+    question: "¿Qué es Astro?",
+    answer:
+      "Astro es un framework web moderno que te permite construir sitios rápidos utilizando un enfoque basado en componentes.",
+  },
+  {
+    question: "¿Astro soporta TailwindCSS?",
+    answer:
+      "Sí, Astro se integra perfectamente con TailwindCSS para que puedas diseñar con utilidades de forma sencilla.",
+  },
+  {
+    question: "¿Puedo usar componentes de React, Vue o Svelte en Astro?",
+    answer:
+      "Astro soporta múltiples frameworks, incluyendo React, Vue, Svelte, Solid y más, todo en un mismo proyecto.",
+  },
+  {
+    question: "¿Astro es bueno para SEO?",
+    answer:
+      "Sí, gracias al renderizado en servidor y la generación estática, los sitios de Astro son altamente optimizados para SEO.",
+  },
+  {
+    question: "¿Es Astro adecuado para proyectos grandes?",
+    answer:
+      "Astro es altamente escalable, ideal tanto para landing pages como para aplicaciones y sitios grandes.",
+  },
+];
+---
+<div class="text-center mb-8">
+    <h2 id="main-title" class="text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl">
+      Preguntas? <br /> <strong>Tenemos las Respuestas</strong>
+    </h2>
+  </div>
+  
+<section class="relative max-w-2xl mx-auto px-4 py-12">
+
+   
+  <!-- Fondo liquid glass estilo iOS -->
+  <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-2xl border border-white/30 shadow-xl shadow-black/5" />
+
+ 
+
+  <div class="space-y-4">
+    {faqs.map((faq, i) => (
+      <details
+        class="group relative rounded-2xl bg-white/10 backdrop-blur-lg border border-white/30 p-4 cursor-pointer transition hover:bg-white/20"
+      >
+        <summary class="flex justify-between items-center font-semibold text-lg list-none text-gray-100">
+          {faq.question}
+          <span
+            class="ml-2 text-xl transition-transform duration-300 group-open:rotate-45"
+          >
+            +
+          </span>
+        </summary>
+        <p class="mt-2 text-gray-200">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
+<br/>
+<br/>

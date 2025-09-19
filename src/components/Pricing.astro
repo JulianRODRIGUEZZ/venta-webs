@@ -1,0 +1,170 @@
+---
+interface Plan {
+  name: string
+  campain: string
+  price: number
+  yearlyPrice: number
+  period: string
+  features: string[]
+  href: string
+  buttonText: string
+  description: string
+  isPopular?: boolean
+}
+
+const title = "Nuestros Planes"
+
+const plans: Plan[] = [
+  {
+    name: "Landing Page",
+    campain: "Perfecto para campañas especificas",
+    price: 299,
+    yearlyPrice: 190,
+    period: "proyecto",
+    features: ["Diseño responsivo", "Optimizacion SEO basica", "Formulario de Contacto", "1 Revision incluida", "Entrega en 5 dias"],
+    href: "#",
+    buttonText: "Elegir plan",
+    description: "Ideal para empezar",
+  },
+  {
+    name: "Sitio Informativo",
+    campain: "Ideal para seervicios profesionales",
+    price: 599,
+    yearlyPrice: 490,
+    period: "proyecto",
+    features: ["Hasta 10 paginas", "Optimizacion SEO avanzada", "Formularios multiples", "3 revisiones incluidas", "Entrega en 10 dias"],
+    href: "#",
+    buttonText: "Elegir plan",
+    description: "El más usado",
+    isPopular: true,
+  },
+  {
+
+    name: "E-commerce",
+    campain: "Tienda online completa",
+    price: 999,
+    yearlyPrice: 990,
+    period: "proyecto",
+    features: ["Productos ilimitados", "Carrito de compras ", "Pasarelas de pago", "Panel administrativo", "Gestion de inventario", "Revisiones ilimitadas", "Entrega en 15 dias"],
+    href: "#",
+    buttonText: "Elegir plan",
+    description: "Para proyectos grandes",
+  },
+]
+---
+
+<div class="container mx-auto py-20">
+  <!-- Título -->
+  <div class="text-center space-y-4 mb-12">
+    <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-5xl text-gray-300">
+      {title}
+    </h2>
+  </div>
+
+  
+
+  <!-- Planes -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {plans.map((plan) => (
+      <div
+        class={`relative rounded-2xl border p-6 bg-white/10 backdrop-blur-md text-center flex flex-col ${
+          plan.isPopular ? "border-orange-600 border-2" : "border-white/20"
+        }`}
+      >
+        {plan.isPopular && (
+          <div class="absolute top-0 right-0 bg-orange-600 py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
+            <svg class="h-4 w-4 text-white fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.845 1.48 8.229L12 18.896l-7.416 4.484 1.48-8.229L0 9.306l8.332-1.151z"
+              />
+            </svg>
+            <span class="text-white ml-1 font-semibold">Popular</span>
+          </div>
+        )}
+
+        <div class="flex-1 flex flex-col">
+            
+          <p class=" text-3xl font-bold text-gray-100">{plan.name}</p>
+          <p class="text-base font-bold text-gray-300">{plan.campain}</p>
+          
+
+          <div class="mt-6 flex items-center justify-center gap-x-2">
+            <span
+              class="text-5xl text-orange-500 font-bold tracking-tight text-white transition-all duration-500 ease-out"
+              data-price
+              data-monthly={plan.price}
+              data-yearly={plan.yearlyPrice}
+            >
+              ${plan.price}
+            </span>
+            {plan.period !== "Next 3 months" && (
+              <span class="text-sm font-semibold leading-6 tracking-wide text-gray-300">
+                / {plan.period}
+              </span>
+            )}
+          </div>
+
+          
+
+          <ul class="mt-5 gap-2 flex flex-col">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-2">
+                <svg
+                  class="h-4 w-4 text-orange-400 mt-1 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-left text-gray-200">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <hr class="w-full my-4 border-white/20" />
+
+          <a
+            href={plan.href}
+            class={`group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter px-4 py-2 rounded-xl border transition-all duration-300 ${
+              plan.isPopular
+                ? "bg-orange-500 text-white border-orange-400 hover:ring-2 hover:ring-orange-400"
+                : "bg-white/10 text-white border-white/20 hover:ring-2 hover:ring-orange-400"
+            }`}
+          >
+            {plan.buttonText}
+          </a>
+
+          <p class="mt-6 text-xs leading-5 text-gray-400">{plan.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- Script que corre en el cliente -->
+<script is:client="load">
+  let isMonthly = true;
+  const toggle = document.getElementById("billing-toggle");
+  const dot = document.getElementById("billing-dot");
+
+  toggle?.addEventListener("click", () => {
+    isMonthly = !isMonthly;
+
+    // mover el puntico
+    if (dot) {
+      dot.style.transform = isMonthly ? "translateX(0)" : "translateX(1.5rem)";
+    }
+
+    document.querySelectorAll("[data-price]").forEach((el) => {
+      const monthly = el.getAttribute("data-monthly");
+      const yearly = el.getAttribute("data-yearly");
+      el.textContent = isMonthly ? `$${monthly}` : `$${yearly}`;
+    });
+
+    document.querySelectorAll("[data-billing]").forEach((el) => {
+      el.textContent = isMonthly ? "billed monthly" : "billed annually";
+    });
+  });
+</script>

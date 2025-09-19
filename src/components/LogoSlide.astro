@@ -1,0 +1,33 @@
+---
+const techs = [
+  { src: "/logos/react.png", alt: "React logo" },
+  { src: "/logos/javascript.png", alt: "JavaScript logo" },
+  { src: "/logos/tailwind.png", alt: "Tailwind CSS logo" },
+  { src: "/logos/wordpress.png", alt: "WordPress logo" },
+  { src: "/logos/java.png", alt: "Java logo" },
+  { src: "/logos/sql.png", alt: "SQL logo" },
+  { src: "/logos/typescript.png", alt: "TypeScript logo" },
+];
+---
+
+<div class="relative overflow-hidden py-10 mx-auto max-w-[700px]">
+  <!-- Carrusel de logos -->
+  <div class="flex gap-8 animate-marquee">
+    {[...techs, ...techs].map((tech) => (
+      <div class="w-20 h-20 bg-neutral-900 rounded-xl shadow-md flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-110 hover:bg-neutral-300">
+        <img src={tech.src} alt={tech.alt} class="w-20 h-20 object-contain" />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+</style>

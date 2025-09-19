@@ -1,0 +1,153 @@
+---
+interface Project {
+  title: string
+  category: string
+  description: string
+  image: string
+  alt: string
+}
+
+const projects: Project[] = [
+  {
+    title: "E-commerce Moda",
+    category: "E-commerce",
+    description:
+      "Tienda online de moda con más de 1000 productos y sistema de inventario avanzado.",
+    image: "/modern-fashion-ecommerce.png",
+    alt: "E-commerce Moda",
+  },
+  {
+    title: "Landing Page SaaS",
+    category: "Landing Page",
+    description:
+      "Landing page para software empresarial con 45% de tasa de conversión.",
+    image: "/blue-saas-landing-page.png",
+    alt: "Landing Page SaaS",
+  },
+  {
+    title: "Sitio Corporativo",
+    category: "Sitio Informativo",
+    description:
+      "Sitio web corporativo para empresa de consultoría con blog integrado.",
+    image: "/corporate-business-website.png",
+    alt: "Sitio Corporativo",
+  },
+  {
+    title: "Marketplace Local",
+    category: "E-commerce",
+    description:
+      "Marketplace para comercios locales con sistema de múltiples vendedores.",
+    image: "/local-marketplace.png",
+    alt: "Marketplace Local",
+  },
+  {
+    title: "Landing Inmobiliaria",
+    category: "Landing Page",
+    description:
+      "Landing page para campaña inmobiliaria con formularios de contacto optimizados.",
+    image: "/real-estate-landing-page.png",
+    alt: "Landing Inmobiliaria",
+  },
+  {
+    title: "Portal Educativo",
+    category: "Sitio Informativo",
+    description:
+      "Portal educativo con sistema de cursos online y área de estudiantes.",
+    image: "/educational-website-portal.png",
+    alt: "Portal Educativo",
+  },
+]
+---
+
+<section id="portafolio" class="py-20 px-4 ">
+  <div class="container mx-auto">
+    <div class="text-center mb-16">
+      <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-6xl lg:text-6xl text-gray-300">
+        Nuestro Portafolio
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Algunos de los proyectos exitosos que hemos desarrollado para nuestros
+        clientes
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div
+          class="bg-black rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-600/50 transition-all duration-300 group"
+        >
+          <!-- Imagen con overlay -->
+          <div class="relative overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.alt}
+              class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <div
+              class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+            >
+              <div class="flex space-x-4">
+                <button
+                  class="p-2 bg-orange-600 rounded-full text-white hover:bg-orange-700 transition-colors"
+                >
+                  <!-- Eye Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+                <button
+                  class="p-2 bg-orange-600 rounded-full text-white hover:bg-orange-700 transition-colors"
+                >
+                  <!-- External Link Icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-5 w-5"
+                  >
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-orange-400 text-sm font-medium">
+                {project.category}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">{project.title}</h3>
+            <p class="text-gray-300">{project.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

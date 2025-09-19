@@ -1,0 +1,103 @@
+---
+import LogoSlide from '../components/LogoSlide.astro';
+---
+<section class="relative overflow-hidden min-h-screen flex flex-col ">
+  <div class="container mx-auto px-4 py-24 sm:py-32 relative z-10 flex-1 flex flex-col">
+    <div class="mx-auto max-w-4xl text-center flex-1 flex flex-col justify-center">
+
+      <!-- Badge -->
+      <div class="mb-8">
+        <span class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-white/10 backdrop-blur-md text-orange-500 font-bold border border-white/20">
+          🚀 Impulsa tu Marca
+        </span>
+      </div>
+
+      <!-- Main Heading -->
+     <div class="mb-8">
+  <h1 class="text-4xl font-bold tracking-tight text-gray-200 sm:text-6xl lg:text-7xl">
+    Creamos <strong>páginas web</strong><br />
+  </h1>
+
+  <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold flex items-center gap-x-4 md:whitespace-nowrap">
+    <span id="typewriter" class="text-orange-500 flex-shrink-0"></span>
+    <em class="italic"></em>
+  </h1>
+</div>
+
+      <!-- Description -->
+      <p class="mx-auto mb-12 max-w-2xl text-lg text-gray-400">
+        Desarrollamos sitios web profesionales, rápidos y optimizados con las últimas tecnologías. 
+        Desde landing pages hasta tiendas online completas, convertimos tu visión en realidad digital.
+      </p>
+
+      <!-- Call to Action -->
+      <div class="flex flex-col items-center gap-6">
+        <a href="#cotizar" class="rounded-full px-6 py-3 bg-orange-600 text-white font-medium hover:bg-orange-500 transition">
+          Contactanos
+        </a>
+      </div>
+      
+    </div>
+    <LogoSlide />
+    
+  </div>
+
+
+  
+</section>
+
+
+<!-- Script que solo corre en el cliente -->
+<script is:inline>
+  if (typeof window !== "undefined") {
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById("typewriter");
+      if (!el) return; // Evita error si no existe
+
+      const palabras = ["Modernas para tu negocio", "Con la Ultima Tecnologia ", "Con la Mejor Optimizacion"];
+      let i = 0;
+      let j = 0;
+      let borrando = false;
+      const velocidad = 120;
+      const velocidadBorrado = 60;
+      const pausaPalabra = 1500;
+
+      function escribir() {
+        const palabraActual = palabras[i];
+
+        if (!borrando && j < palabraActual.length) {
+          el.textContent = palabraActual.substring(0, j + 1);
+          j++;
+          setTimeout(escribir, velocidad);
+        } else if (borrando && j > 0) {
+          el.textContent = palabraActual.substring(0, j - 1);
+          j--;
+          setTimeout(escribir, velocidadBorrado);
+        } else if (!borrando && j === palabraActual.length) {
+          borrando = true;
+          setTimeout(escribir, pausaPalabra);
+        } else if (borrando && j === 0) {
+          borrando = false;
+          i = (i + 1) % palabras.length;
+          setTimeout(escribir, velocidad);
+        }
+      }
+
+      escribir();
+    });
+  }
+</script>
+
+<!-- Estilos para el cursor -->
+<style>
+  #typewriter::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+    color: #fff;
+    margin-left: 2px;
+  }
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+</style>
