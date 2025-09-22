@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import ButtonWhatsap from '../components/ButtonWhatsap.astro'
 
 interface Props {
 	description: string;
@@ -42,7 +43,10 @@ const { currentLocale} = Astro
 
   <Header />
   <slot />
+  <ButtonWhatsap />
   <Footer />
+  
+
 </body>
 
 

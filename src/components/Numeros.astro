@@ -1,0 +1,50 @@
+---
+import { CountUp } from "./CountUp";
+---
+
+
+
+<section class="relative w-full  px-6 lg:px-20">
+
+  
+
+  <!-- Contenido centrado y limitado -->
+  <div class="relative z-10 max-w-4xl mx-auto">
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-y-10 text-white">
+
+      <div class="flex flex-col justify-center items-center">
+        <span id="main-title" class="number text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl">
+          +<CountUp client:visible initial={0} final={10} />
+        </span>
+        <span class="uppercase opacity-70 text-center">Años de experiencia</span>
+      </div>
+
+      <div class="flex flex-col justify-center items-center">
+        <span id="main-title" class="number text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl">
+          <CountUp client:visible initial={0} final={100} />%
+        </span>
+        <span class="uppercase opacity-70 text-center">Trabajo Garantizado</span>
+      </div>
+
+      <div class="flex flex-col justify-center items-center">
+        <span id="main-title" class="number text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl">
+          +<CountUp client:visible initial={0} final={3.5} decimals={1} />k
+        </span>
+        <span class="uppercase opacity-70 text-center">De clientes satisfechos</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+    .number {
+        text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+    }
+    
+</style>

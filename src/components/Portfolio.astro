@@ -5,61 +5,62 @@ interface Project {
   description: string
   image: string
   alt: string
+  link: string
 }
 
 const projects: Project[] = [
   {
-    title: "E-commerce Moda",
-    category: "E-commerce",
-    description:
-      "Tienda online de moda con más de 1000 productos y sistema de inventario avanzado.",
-    image: "/modern-fashion-ecommerce.png",
+    title: "Pagina de IA",
+    category: "Landing Page",
+    description: "Pagina web de inteligencia artificial.",
+    image: "/page-ia.png",
+    link: "https://v0-ai-agency-landing-page-and-portf-eight-eta.vercel.app/",
     alt: "E-commerce Moda",
   },
   {
-    title: "Landing Page SaaS",
+    title: "AI Landing Page",
     category: "Landing Page",
-    description:
-      "Landing page para software empresarial con 45% de tasa de conversión.",
-    image: "/blue-saas-landing-page.png",
+    description: "Landing page para software empresarial con 45% de tasa de conversión.",
+    image: "/landing-ia.png",
+    link: "https://v0-ai-landing-page-nine-gold.vercel.app/",
     alt: "Landing Page SaaS",
   },
   {
-    title: "Sitio Corporativo",
-    category: "Sitio Informativo",
-    description:
-      "Sitio web corporativo para empresa de consultoría con blog integrado.",
-    image: "/corporate-business-website.png",
+    title: "Agencia de Marketing",
+    category: "Web Marketing",
+    description: "Sitio web de marketing digital.",
+    image: "/web-stream.png",
+    link: "https://v0-streamline-landing-page-khaki-mu.vercel.app/",
     alt: "Sitio Corporativo",
   },
   {
-    title: "Marketplace Local",
+    title: "Ecommerce Skincare",
     category: "E-commerce",
-    description:
-      "Marketplace para comercios locales con sistema de múltiples vendedores.",
-    image: "/local-marketplace.png",
+    description: "Marketplace para comercios locales con sistema de múltiples vendedores.",
+    image: "/ecommerce.png",
+    link: "https://skincare-wine-beta.vercel.app/",
     alt: "Marketplace Local",
   },
   {
-    title: "Landing Inmobiliaria",
-    category: "Landing Page",
-    description:
-      "Landing page para campaña inmobiliaria con formularios de contacto optimizados.",
-    image: "/real-estate-landing-page.png",
+    title: "Portfolio",
+    category: "Portfolio Personal",
+    description: "Landing page para campaña inmobiliaria con formularios de contacto optimizados.",
+    image: "/portfolio.png",
+    link: "https://v0-personal-portfolio-website-ruby-xi.vercel.app/",
     alt: "Landing Inmobiliaria",
   },
   {
-    title: "Portal Educativo",
-    category: "Sitio Informativo",
-    description:
-      "Portal educativo con sistema de cursos online y área de estudiantes.",
-    image: "/educational-website-portal.png",
-    alt: "Portal Educativo",
+    title: "Saas Landing Page",
+    category: "Landing Page",
+    description: "Portal educativo con sistema de cursos online y área de estudiantes.",
+    image: "/saas.png",
+    link: "https://v0-mind-space-saa-s-landing-page-t-henna.vercel.app/",
+    alt: "Saas Landing Page",
   },
 ]
 ---
 
-<section id="portafolio" class="py-20 px-4 ">
+<section id="portafolio" class="py-40 px-4 ">
   <div class="container mx-auto">
     <div class="text-center mb-16">
       <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-6xl lg:text-6xl text-gray-300">
@@ -74,7 +75,7 @@ const projects: Project[] = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project) => (
         <div
-          class="bg-black rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-600/50 transition-all duration-300 group"
+          class="bg-white/20 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-600/50 transition-all duration-300 group"
         >
           <!-- Imagen con overlay -->
           <div class="relative overflow-hidden">
@@ -87,10 +88,13 @@ const projects: Project[] = [
               class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
             >
               <div class="flex space-x-4">
-                <button
+                <!-- Eye Icon con link -->
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="p-2 bg-orange-600 rounded-full text-white hover:bg-orange-700 transition-colors"
                 >
-                  <!-- Eye Icon -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -108,30 +112,9 @@ const projects: Project[] = [
                     ></path>
                     <circle cx="12" cy="12" r="3"></circle>
                   </svg>
-                </button>
-                <button
-                  class="p-2 bg-orange-600 rounded-full text-white hover:bg-orange-700 transition-colors"
-                >
-                  <!-- External Link Icon -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="h-5 w-5"
-                  >
-                    <path d="M15 3h6v6"></path>
-                    <path d="M10 14 21 3"></path>
-                    <path
-                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                    ></path>
-                  </svg>
-                </button>
+                </a>
+
+               
               </div>
             </div>
           </div>

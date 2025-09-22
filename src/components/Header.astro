@@ -1,8 +1,12 @@
 ---
-// HeaderGlass.astro
+const phone = "50768059285"; // número de WhatsApp con indicativo de país
+const message = "Hola, quiero más información para crear mi pagina web"; // mensaje inicial
+const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 ---
+
+<!-- Desktop Header -->
 <header
-   class="fixed top-4 left-1/2 z-[9999] hidden w-full max-w-5xl -translate-x-1/2 
+  class="fixed top-4 left-1/2 z-[9999] hidden w-full max-w-5xl -translate-x-1/2 
          flex-row items-center justify-between rounded-2xl 
          bg-white/20 backdrop-blur-xl border border-white/10 shadow-lg 
          transition-all duration-300 px-6 py-3 md:flex"
@@ -10,36 +14,26 @@
   <!-- Logo -->
   <a
     class="z-50 flex items-center justify-center gap-2"
-    href="https://v0.app"
+    href="https://www.bytedigitalstudio.com/"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <svg
-      fill="currentColor"
-      viewBox="0 0 147 70"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      class="text-white rounded-full w-8 h-8"
-    >
-      <path d="M56 50.2031V14H70V60.1562C70 65.5928 65.5928 70 60.1562 70C57.5605 70 54.9982 68.9992 53.1562 67.1573L0 14H19.7969L56 50.2031Z"></path>
-      <path d="M147 56H133V23.9531L100.953 56H133V70H96.6875C85.8144 70 77 61.1856 77 50.3125V14H91V46.1562L123.156 14H91V0H127.312C138.186 0 147 8.81439 147 19.6875V56Z"></path>
-    </svg>
+    <img src="/logo-byte.png" aria-hidden="true" class="h-5 me-3" />
   </a>
 
   <!-- Desktop Nav -->
   <nav class="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-6 
               text-sm font-medium text-gray-300 transition duration-200 md:flex">
-    <a href="#features" class="relative px-3 py-2 hover:text-white transition-colors">Home</a>
-    <a href="#pricing" class="relative px-3 py-2 hover:text-white transition-colors">Servicios</a>
-    <a href="#testimonials" class="relative px-3 py-2 hover:text-white transition-colors">Portafolio</a>
-    <a href="#faq" class="relative px-3 py-2 hover:text-white transition-colors">Planes</a>
+    <a href="#hero" class="relative px-3 py-2 hover:text-white transition-colors">Home</a>
+    <a href="#services" class="relative px-3 py-2 hover:text-white transition-colors">Servicios</a>
+    <a href="#portafolio" class="relative px-3 py-2 hover:text-white transition-colors">Portafolio</a>
+    <a href="#plans" class="relative px-3 py-2 hover:text-white transition-colors">Planes</a>
   </nav>
 
   <!-- Desktop Actions -->
   <div class="flex items-center gap-4">
-   
     <a
-      href="/signup"
+      href={url}
       class="rounded-lg font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 
              inline-block text-center bg-gradient-to-r from-orange-500/90 to-orange-600/90 
              text-white shadow-md px-4 py-2 text-sm"
@@ -55,25 +49,19 @@
          rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg 
          md:hidden px-4 py-3"
 >
+  <!-- Logo -->
   <a
     class="flex items-center justify-center gap-2"
-    href="https://v0.app"
+    href="https://www.bytedigitalstudio.com/"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <svg
-      fill="currentColor"
-      viewBox="0 0 147 70"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      class="text-white rounded-full w-7 h-7"
-    >
-      <path d="M56 50.2031V14H70V60.1562C70 65.5928 65.5928 70 60.1562 70C57.5605 70 54.9982 68.9992 53.1562 67.1573L0 14H19.7969L56 50.2031Z"></path>
-      <path d="M147 56H133V23.9531L100.953 56H133V70H96.6875C85.8144 70 77 61.1856 77 50.3125V14H91V46.1562L123.156 14H91V0H127.312C138.186 0 147 8.81439 147 19.6875V56Z"></path>
-    </svg>
+    <img src="/logo-byte.png" alt="Logo" class="h-6" />
   </a>
 
+  <!-- Toggle button -->
   <button
+    id="menu-toggle"
     class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/20 
            transition-colors hover:bg-white/20"
     aria-label="Toggle menu"
@@ -85,3 +73,28 @@
     </div>
   </button>
 </header>
+
+<!-- Mobile Menu (oculto por defecto) -->
+<nav
+  id="mobile-menu"
+  class="fixed top-20 right-4 left-4 z-[9998] hidden flex-col space-y-4 rounded-2xl 
+         bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg p-6 text-center"
+>
+  <a href="#hero" class="block px-3 py-2 text-white/80 hover:text-white transition">Home</a>
+  <a href="#services" class="block px-3 py-2 text-white/80 hover:text-white transition">Servicios</a>
+  <a href="#portafolio" class="block px-3 py-2 text-white/80 hover:text-white transition">Portafolio</a>
+  <a href="#plans" class="block px-3 py-2 text-white/80 hover:text-white transition">Planes</a>
+  <a href={url} class="block px-3 py-2 text-orange-400 font-bold hover:text-orange-300">Contactanos</a>
+</nav>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  }
+</script>
+

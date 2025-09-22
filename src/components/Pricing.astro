@@ -6,7 +6,7 @@ interface Plan {
   yearlyPrice: number
   period: string
   features: string[]
-  href: string
+  
   buttonText: string
   description: string
   isPopular?: boolean
@@ -22,7 +22,7 @@ const plans: Plan[] = [
     yearlyPrice: 190,
     period: "proyecto",
     features: ["Diseño responsivo", "Optimizacion SEO basica", "Formulario de Contacto", "1 Revision incluida", "Entrega en 5 dias"],
-    href: "#",
+    
     buttonText: "Elegir plan",
     description: "Ideal para empezar",
   },
@@ -33,7 +33,7 @@ const plans: Plan[] = [
     yearlyPrice: 490,
     period: "proyecto",
     features: ["Hasta 10 paginas", "Optimizacion SEO avanzada", "Formularios multiples", "3 revisiones incluidas", "Entrega en 10 dias"],
-    href: "#",
+    
     buttonText: "Elegir plan",
     description: "El más usado",
     isPopular: true,
@@ -46,14 +46,19 @@ const plans: Plan[] = [
     yearlyPrice: 990,
     period: "proyecto",
     features: ["Productos ilimitados", "Carrito de compras ", "Pasarelas de pago", "Panel administrativo", "Gestion de inventario", "Revisiones ilimitadas", "Entrega en 15 dias"],
-    href: "#",
+    
     buttonText: "Elegir plan",
     description: "Para proyectos grandes",
   },
 ]
+
+const phone = "50768059285"; // número de WhatsApp con indicativo de país
+const message = "Hola, quiero más información para crear mi pagina web"; // mensaje inicial
+const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
 ---
 
-<div class="container mx-auto py-20">
+<div class="container mx-auto py-20" id="plans">
   <!-- Título -->
   <div class="text-center space-y-4 mb-12">
     <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-5xl text-gray-300">
@@ -126,7 +131,9 @@ const plans: Plan[] = [
           <hr class="w-full my-4 border-white/20" />
 
           <a
-            href={plan.href}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
             class={`group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter px-4 py-2 rounded-xl border transition-all duration-300 ${
               plan.isPopular
                 ? "bg-orange-500 text-white border-orange-400 hover:ring-2 hover:ring-orange-400"
