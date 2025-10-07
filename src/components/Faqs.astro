@@ -27,21 +27,25 @@ const faqs = [
   },
 ];
 ---
-<div class="text-center mb-8">
+<div class="text-center mb-8" data-aos="flip-left"
+data-aos-easing="ease-out-cubic"
+data-aos-duration="2000">
     <h2 id="main-title" class="text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl">
       Preguntas? <br /> <strong>Tenemos las Respuestas</strong>
     </h2>
   </div>
   
-<section class="relative max-w-2xl mx-auto px-4 py-12" id="faqs">
+<section class="relative max-w-2xl mx-auto px-4 py-12" id="faqs" data-aos="flip-right"
+data-aos-easing="ease-out-cubic"
+data-aos-duration="2000" >
 
    
   <!-- Fondo liquid glass estilo iOS -->
-  <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-2xl border border-white/30 shadow-xl shadow-black/5" />
+  <div  class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-2xl border border-white/30 shadow-xl shadow-black/5" />
 
  
 
-  <div class="space-y-4">
+  <div class="space-y-4" >
     {faqs.map((faq, i) => (
       <details
         class="group relative rounded-2xl bg-white/10 backdrop-blur-lg border border-white/30 p-4 cursor-pointer transition hover:bg-white/20"

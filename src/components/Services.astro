@@ -36,14 +36,18 @@ const processSteps = [
 <section class="pt-32 pb-20 px-4"id="services">
   <div class="max-w-6xl mx-auto">
     <!-- Hero -->
-    <div class="text-center mb-8">
-      <h2 id="main-title" class="text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl">
+    <div  class="text-center mb-8" >
+      <h2 id="main-title" class="text-4xl font-bold tracking-tight text-gray-300 sm:text-6xl lg:text-6xl" data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="1500">
         Nuestros <strong>Servicios</strong>
       </h2>
     </div>
 
     <!-- Services -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 py-14" data-aos="fade-left"
+    data-aos-offset="400"
+    data-aos-easing="ease-in-sine">
   {services.map((service, index) => (
     <div
       class={`group relative ${
@@ -105,3 +109,21 @@ const processSteps = [
     animation: liquid 15s ease-in-out infinite;
   }
 </style>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+<script>
+  
+  import AOS from 'aos';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+  });
+</script>
+
+

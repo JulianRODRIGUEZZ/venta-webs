@@ -63,16 +63,19 @@ const projects: Project[] = [
 <section id="portafolio" class="py-40 px-4 ">
   <div class="container mx-auto">
     <div class="text-center mb-16">
-      <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-6xl lg:text-6xl text-gray-300">
+      <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-6xl lg:text-6xl text-gray-300" data-aos="fade-up"
+      data-aos-duration="3000">
         Nuestro Portafolio
       </h2>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-aos="fade-up"
+      data-aos-duration="3000">
         Algunos de los proyectos exitosos que hemos desarrollado para nuestros
         clientes
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-down"
+    data-aos-duration="3000">
       {projects.map((project) => (
         <div
           class="bg-white/20 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden border border-gray-700 hover:border-orange-600/50 transition-all duration-300 group"
