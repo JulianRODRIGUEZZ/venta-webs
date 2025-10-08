@@ -94,12 +94,15 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
           
 
           <div class="mt-6 flex items-center justify-center gap-x-2">
+            <span class="text-sm font-semibold leading-6 tracking-wide text-gray-300">desde</span>
             <span
               class="text-5xl text-orange-500 font-bold tracking-tight text-white transition-all duration-500 ease-out"
               data-price
+              
               data-monthly={plan.price}
               data-yearly={plan.yearlyPrice}
             >
+              
               ${plan.price}
             </span>
             {plan.period !== "Next 3 months" && (
@@ -150,28 +153,5 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   </div>
 </div>
 
-<!-- Script que corre en el cliente -->
-<script is:client="load">
-  let isMonthly = true;
-  const toggle = document.getElementById("billing-toggle");
-  const dot = document.getElementById("billing-dot");
 
-  toggle?.addEventListener("click", () => {
-    isMonthly = !isMonthly;
 
-    // mover el puntico
-    if (dot) {
-      dot.style.transform = isMonthly ? "translateX(0)" : "translateX(1.5rem)";
-    }
-
-    document.querySelectorAll("[data-price]").forEach((el) => {
-      const monthly = el.getAttribute("data-monthly");
-      const yearly = el.getAttribute("data-yearly");
-      el.textContent = isMonthly ? `$${monthly}` : `$${yearly}`;
-    });
-
-    document.querySelectorAll("[data-billing]").forEach((el) => {
-      el.textContent = isMonthly ? "billed monthly" : "billed annually";
-    });
-  });
-</script>
