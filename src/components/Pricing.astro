@@ -61,8 +61,7 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 <div class="container mx-auto py-20" id="plans" >
   <!-- Título -->
   <div class="text-center space-y-4 mb-12">
-    <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-5xl text-gray-300" data-aos="fade-up"
-    data-aos-duration="3000">
+    <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-5xl text-gray-300" >
       {title}
     </h2>
   </div>
@@ -70,8 +69,7 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   
 
   <!-- Planes -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-aos="fade-up"
-  data-aos-duration="3000">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4" >
     {plans.map((plan) => (
       <div
         class={`relative rounded-2xl border p-6 bg-white/10 backdrop-blur-md text-center flex flex-col ${
