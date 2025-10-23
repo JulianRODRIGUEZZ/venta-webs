@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte}",
+    "./src/**/*.{astro,html,js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+    require("@midudev/tailwind-animations"),
+  ],
+};

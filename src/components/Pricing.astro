@@ -53,12 +53,12 @@ const plans: Plan[] = [
 ]
 
 const phone = "50768059285"; // número de WhatsApp con indicativo de país
-const message = "Hola, quiero más información para crear mi pagina web"; // mensaje inicial
+const message = "Hola, quiero adquirir un plan para crear mi pagina web"; // mensaje inicial
 const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
 ---
 
-<div class="container mx-auto py-20" id="plans" >
+<div class="view-animate-[--subjectReveal] animate-zoom-in animate-range-[entry_10%_contain_25%] container mx-auto py-20" id="plans" >
   <!-- Título -->
   <div class="text-center space-y-4 mb-12">
     <h2 id="main-title" class="text-4xl font-bold tracking-tight sm:text-5xl text-gray-300" >
@@ -69,15 +69,15 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   
 
   <!-- Planes -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4" >
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 " >
     {plans.map((plan) => (
       <div
-        class={`relative rounded-2xl border p-6 bg-white/10 backdrop-blur-md text-center flex flex-col ${
+        class={`relative rounded-2xl border p-6 bg-white/10 backdrop-blur-md text-center flex flex-col  ${
           plan.isPopular ? "border-orange-600 border-2" : "border-white/20"
         }`}
       >
         {plan.isPopular && (
-          <div class="absolute top-0 right-0 bg-orange-600 py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
+          <div class="absolute top-0 right-0 bg-orange-600 py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center ">
             <svg class="h-4 w-4 text-white fill-current" viewBox="0 0 24 24">
               <path
                 d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.845 1.48 8.229L12 18.896l-7.416 4.484 1.48-8.229L0 9.306l8.332-1.151z"
@@ -87,7 +87,7 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
           </div>
         )}
 
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col ">
             
           <p class=" text-3xl font-bold text-gray-100">{plan.name}</p>
           <p class="text-base font-bold text-gray-300">{plan.campain}</p>

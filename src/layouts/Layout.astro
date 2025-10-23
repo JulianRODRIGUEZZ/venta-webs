@@ -2,8 +2,6 @@
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import ButtonWhatsap from '../components/ButtonWhatsap.astro'
-
-
 ---
 
 <!doctype html>
@@ -17,14 +15,18 @@ import ButtonWhatsap from '../components/ButtonWhatsap.astro'
   </head>
 
   <body class="relative min-h-screen">
-    <!-- Fondo global -->
     <div class="fixed inset-0 -z-10 bg-neutral-950 bg-[radial-gradient(ellipse_90%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
 
     <Header />
     <slot />
     <ButtonWhatsap />
     <Footer />
-
-    
   </body>
 </html>
+
+<style is:global>
+  @import "tailwindcss/base";
+  @import "tailwindcss/components";
+  @import "tailwindcss/utilities";
+</style>
+
