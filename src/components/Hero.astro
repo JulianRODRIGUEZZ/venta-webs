@@ -1,5 +1,6 @@
 ---
 import LogoSlide from '../components/LogoSlide.astro';
+import SuscribeForm from '../newsletter/SuscribeForm.astro';
 
 const phone = "50768059285"; // número de WhatsApp con indicativo de país
 const message = "Hola, quiero más información para crear mi pagina web"; // mensaje inicial
@@ -22,7 +23,7 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         </span>
       </div>
 
-      <!-- Main Heading -->
+      <!-- Main-->
       <div class=" mb-6 sm:mb-10" >
         <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-200 leading-tight">
           Creamos <strong>páginas web</strong><br />
@@ -40,18 +41,14 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         Desde landing pages hasta tiendas online completas, convertimos tu visión en realidad digital.
       </p>
 
-      <!-- Call to Action -->
+      <!-- formulario suscribe -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6" >
-        <a
-         href={url}
-         target="_blank"
-         class="w-full sm:w-auto text-center rounded-full px-6 py-3 sm:px-8 sm:py-3 bg-orange-600 text-white text-sm sm:text-base font-medium hover:bg-orange-500 transition">
-          Contáctanos
-        </a>
-      </div>
+
+        <SuscribeForm />
+        
     </div>
 
-    <!-- Logos -->
+    <!-- Logos en movimiento -->
     <div class="mt-12 sm:mt-16">
       <LogoSlide />
     </div>
