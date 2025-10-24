@@ -1,4 +1,4 @@
-import { supabase } from "@/supabase"
+import  supabase  from "@/supabase"
 
 
 const ERROR_CODE_ALREADY_EXISTS = "23505"
