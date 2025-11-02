@@ -2,8 +2,8 @@
 import LogoSlide from '../components/LogoSlide.astro';
 import SuscribeForm from '../newsletter/SuscribeForm.astro';
 
-const phone = "50768059285"; // número de WhatsApp con indicativo de país
-const message = "Hola, quiero más información para crear mi pagina web"; // mensaje inicial
+const phone = "50768059285";
+const message = "Hola, quiero más información para crear mi pagina web";
 const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 ---
 
@@ -13,44 +13,42 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   <div id="particles-js" class="absolute inset-0 w-full h-full"></div>
 
   <!-- Contenido Hero -->
-  <div class=" container mx-auto px-4 py-16 sm:py-24 lg:py-32 relative z-10 flex-1 flex flex-col">
-    <div class="mx-auto max-w-4xl text-center flex-1 flex flex-col justify-center">
+  <div class="container mx-auto px-4 py-16 relative z-10 flex-1 flex items-center">
+    <div class="w-full max-w-4xl mx-auto text-center">
 
       <!-- Badge -->
-      <div class="mb-6 sm:mb-8">
-        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-full bg-white/10 backdrop-blur-md text-orange-500 font-bold border border-white/20">
+      <div class="mb-6 py-8">
+        <span class="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-full bg-white/10 backdrop-blur-md text-orange-500 font-bold border border-white/20">
           🚀 Impulsa tu Marca
         </span>
       </div>
 
-      <!-- Main-->
-      <div class=" mb-6 sm:mb-10" >
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-200 leading-tight">
-          Creamos <strong>páginas web</strong><br />
+      <!-- Main Heading -->
+      <div class="mb-10">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-200 leading-tight mb-4">
+          Creamos <strong class="text-white">páginas web</strong>
         </h1>
 
-        <h1 class="mt-4 text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-4">
-          <span id="typewriter" class="text-orange-500 flex-shrink-0"></span>
-          <em class="italic hidden sm:inline"></em>
+        <h1 class="text-3xl md:text-5xl font-bold">
+          <span id="typewriter" class="text-orange-500 inline-block min-h-[1.2em]"></span>
         </h1>
       </div>
 
       <!-- Description -->
-      <p class=" mx-auto mb-10 sm:mb-12 max-w-xl sm:max-w-2xl text-base sm:text-lg text-gray-400 px-2" >
+      <p class="mx-auto mb-12 max-w-2xl text-base md:text-lg text-gray-400 leading-relaxed">
         Desarrollamos sitios web profesionales, rápidos y optimizados con las últimas tecnologías. 
         Desde landing pages hasta tiendas online completas, convertimos tu visión en realidad digital.
       </p>
 
-      <!-- formulario suscribe -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6" >
+      <!-- CTA Button de prueba -->
+      <div class="mb-16">
+      <SuscribeForm />
+      </div>
 
-        <SuscribeForm />
-        
-    </div>
-
-    <!-- Logos en movimiento -->
-    <div class="mt-12 sm:mt-16">
-      <LogoSlide />
+      <!-- Logos en movimiento -->
+      <div class="mt-auto">
+        <LogoSlide />
+      </div>
     </div>
   </div>
 </section>
@@ -59,26 +57,35 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" is:inline></script>
 <script is:inline>
   if (typeof window !== "undefined") {
-    // Particles config SOLO para este hero
+    const isMobile = window.innerWidth < 768;
+    
     particlesJS("particles-js", {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { 
+          value: isMobile ? 40 : 80, 
+          density: { enable: true, value_area: 800 } 
+        },
         color: { value: "#ffffff" },
         shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3, random: true },
+        opacity: { value: isMobile ? 0.3 : 0.5 },
+        size: { value: isMobile ? 2 : 3, random: true },
         line_linked: {
           enable: true,
           distance: 150,
           color: "#ffffff",
-          opacity: 0.4,
+          opacity: isMobile ? 0.2 : 0.4,
           width: 1
         },
-        move: { enable: true, speed: 6, direction: "none", out_mode: "out" }
+        move: { 
+          enable: true, 
+          speed: isMobile ? 3 : 6, 
+          direction: "none", 
+          out_mode: "out" 
+        }
       },
       interactivity: {
         events: {
-          onhover: { enable: true, mode: "repulse" },
+          onhover: { enable: !isMobile, mode: "repulse" },
           onclick: { enable: true, mode: "push" }
         }
       },
@@ -90,7 +97,11 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
       const el = document.getElementById("typewriter");
       if (!el) return;
 
-      const palabras = ["Modernas para tu negocio", "Con la Última Tecnología", "Con la Mejor Optimización"];
+      const palabras = [
+        "Modernas para tu negocio", 
+        "Con la Última Tecnología", 
+        "Con la Mejor Optimización"
+      ];
       let i = 0, j = 0, borrando = false;
       const velocidad = 120, velocidadBorrado = 60, pausaPalabra = 1500;
 
@@ -128,6 +139,7 @@ const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     color: #fff;
     margin-left: 2px;
   }
+  
   @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
